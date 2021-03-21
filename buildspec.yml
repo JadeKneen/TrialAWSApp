@@ -5,7 +5,7 @@ phases:
     commands:
     - echo build started on `date`
     - dotnet restore
-    - dotnet publish --no-restore -c release
+    - dotnet publish -c release
 
 post-build:
     commands:
