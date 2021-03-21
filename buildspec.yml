@@ -4,11 +4,11 @@ phases:
   build:
     commands:
     - dotnet restore
-    - dotnet publish -c Release
+    - dotnet publish --no-restore -c Release
 
 post-build:
     commands:
-        - mv ./TrialAWSApp/bin/Release/netstandard2.0/dist ./artifact
-        - cp -R ./TrialAWSApp/bin/Release/netstandard2.0/publish/wwwroot/css./artifact/
+        - mv ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.0/dist./artifact
+        - cp -R ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.0/publish/wwwroot/css./artifact/
     finally:
         - aws s3 cp ./artifact s3://jade-test-bucket-with-blazor -recursive
