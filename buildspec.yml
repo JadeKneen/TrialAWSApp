@@ -1,14 +1,19 @@
 version: 0.2
 
 phases:
+    pre-build:
+    commands:
+    - echo Restore started on `date`
+    - dotnet restore TrialAWSApp.csproj
+
   build:
     commands:
-    - dotnet restore
-    - dotnet publish --no-restore -c Release
+    - echo build started on `date`
+    - dotnet publish --no-restore -c release
 
 post-build:
     commands:
-        - mv ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.1/dist./artifact
-        - cp -R ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.1/publish/wwwroot/css./artifact/
+        - mv ./TrialAWSApp/bin/Release/netstandard2.1/dist./artifact
+        - cp -R ./TrialAWSApp/bin/Release/netstandard2.1/publish/wwwroot/css./artifact/
     finally:
         - aws s3 cp ./artifact s3://jade-test-bucket-with-blazor -recursive
