@@ -8,7 +8,7 @@ phases:
 
 post-build:
     commands:
-        - mv ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.0/dist./artifact
-        - cp -R ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.0/publish/wwwroot/css./artifact/
+        - mv ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.1/dist./artifact
+        - cp -R ./TrialAWSApp/TrialAWSApp/bin/Release/netstandard2.1/publish/wwwroot/css./artifact/
     finally:
         - aws s3 cp ./artifact s3://jade-test-bucket-with-blazor -recursive
