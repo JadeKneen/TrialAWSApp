@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      – dotnet restore
+      – dotnet publish –no-restore -c Release
+    finally:
+      - echo This always runs even if the install command fails
+
