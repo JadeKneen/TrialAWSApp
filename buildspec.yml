@@ -3,10 +3,9 @@ version: 0.2
 phases:
   build:
     commands:
-    - echo build started on `date`
-    - dotnet restore
-    - dotnet publish -c Release -f netstandard2.1
-
+    - ecdotnet 
+    - dotnet build -c Release
+    - dotnet publish -c Release --no-build -o publish TrialAWSApp.sln
 post-build:
     commands:
         - mv ./TrialAWSApp/bin/Release/netstandard2.1/dist ./artifact
