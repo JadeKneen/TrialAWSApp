@@ -1,14 +1,10 @@
 version: 0.2
 
 phases:
-    pre-build:
-    commands:
-    - echo Restore started on `date`
-    - dotnet restore TrialAWSApp.csproj
-
   build:
     commands:
     - echo build started on `date`
+    - dotnet restore
     - dotnet publish --no-restore -c release
 
 post-build:
