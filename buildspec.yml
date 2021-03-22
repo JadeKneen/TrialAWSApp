@@ -1,6 +1,9 @@
 version: 0.2
 
 phases:
+install:
+    runtime-versions:
+        dotnet: 2.1
   build:
     commands:
     - echo build started on `date`
@@ -12,4 +15,4 @@ post-build:
         - mv ./TrialAWSApp/bin/Release/netstandard2.1/dist ./artifact
         - cp -R ./TrialAWSApp/bin/Release/netstandard2.1/publish/wwwroot/css ./artifact/
     finally:
-        - aws s3 cp ./artifact s3://jade-test-bucket-with-blazor -recursive
+        - aws s3 cp ./artifact s3://myawsbucketbyjade -recursive
